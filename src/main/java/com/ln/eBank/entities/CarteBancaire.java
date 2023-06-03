@@ -2,6 +2,8 @@ package com.ln.eBank.entities;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -20,6 +22,7 @@ import lombok.experimental.SuperBuilder;
 @Setter
 @SuperBuilder
 @AllArgsConstructor
+@NoArgsConstructor
 public class CarteBancaire extends AbstractEntity {
 	private int numCB;
 	private int anneeFinCB;
@@ -29,5 +32,6 @@ public class CarteBancaire extends AbstractEntity {
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name = "id_client")
 	@OnDelete(action = OnDeleteAction.CASCADE)
+	@JsonIgnore
 	private Client client;
 }

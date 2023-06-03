@@ -9,7 +9,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.ln.eBank.entities.CarteBancaire;
 
 public interface CarteBancaireRepository extends JpaRepository<CarteBancaire, Long> {
-	Page<CarteBancaire> findByIdClient(long idClient, Pageable pageable);
+	//Page<CarteBancaire> findByIdClient(long idClient, Pageable pageable);
 
-	Optional<CarteBancaire> findByIdAndIdClient(long id, long clientId);
+	//Optional<CarteBancaire> findByIdAndIdClient(long id, long clientId);
 }

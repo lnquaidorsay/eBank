@@ -2,6 +2,7 @@ package com.ln.eBank.dto;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.ln.eBank.entities.CarteBancaire;
 import com.ln.eBank.entities.Client;
 import com.ln.eBank.entities.OperationsBancaires;
@@ -23,6 +24,7 @@ public class CarteBancaireDto {
 	private int anneeFinCB;
 	private int moisFinCB;
 	private List<OperationsBancaires> operationsBancaires;
+	@JsonIgnore
 	private Client client;
 
 	public static CarteBancaire mapToEntity(CarteBancaireDto cb) {

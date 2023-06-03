@@ -15,6 +15,9 @@
 	<description>Consultation of transactions on bank cards of bank customers</description>
 	<properties>
 		<java.version>17</java.version>
+		<frontend.src.directory>src/ui/ebank-ui</frontend.src.directory>
+		<frontend.app.src.directory>src/main/resources/frontend/ebank-app</frontend.app.src.directory>
+		<node.version>v16.14.2</node.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -64,6 +67,26 @@
 
 	<build>
 		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>1.6.0</version>
+				<executions>
+					<execution>
+						<phase>validate</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<executable>ng</executable>
+					<workingDirectory>${frontend.app.src.directory}</workingDirectory>
+					<arguments>
+						<argument>build</argument>
+					</arguments>
+				</configuration>
+			</plugin>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>

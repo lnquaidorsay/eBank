@@ -1,5 +1,6 @@
 package com.ln.eBank.services.impl;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,6 +26,8 @@ public class CarteBancaireServiceImpl implements CarteBancaireService {
 	public CarteBancaireDto creerCarteBancaire(long idClient, CarteBancaireDto cb) {
 		CarteBancaire currentCb = CarteBancaireDto.mapToEntity(cb);
 		Optional<Client> client = clientRepository.findById(idClient);
+		currentCb.setCreatedDate(LocalDateTime.now());
+		currentCb.setLastModifiedDate(LocalDateTime.now());
 		currentCb.setClient(client.get());
 		CarteBancaire carteBancaire = carteBancaireRepository.save(currentCb);
 		return CarteBancaireDto.mapToDto(carteBancaire);
